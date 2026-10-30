@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+/* Palette taken from vevaar.com: black canvas, zinc neutrals, purple → violet → pink accent */
+@theme inline {
+  --color-canvas: #000000;
+  --color-surface: #0b0b0d;
+  --color-card: #111113;
+  --color-line: #27272a;
+  --color-ink: #fafafa;
+  --color-muted: #a1a1aa;
+  --color-faint: #8b8b94;
+  --color-accent: #a855f7;
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-display: var(--font-outfit), var(--font-geist-sans), sans-serif;
+}
+
+html {
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  overflow-x: clip;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-canvas);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+}
+
+::selection {
+  background: #c084fc;
+  color: #000;
+}
+
+:focus-visible {
+  outline: 2px solid #c4b5fd;
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.text-gradient {
+  background-image: linear-gradient(90deg, #c084fc, #a78bfa, #f472b6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.label {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.35em;
+  color: var(--color-muted);
+}
+
+/* Background paths (after 21st.dev "Background Paths" by kokonutd) */
+@keyframes path-flow {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: -2000; }
+}
+.flow-path {
+  stroke-dasharray: 600 1400;
+  animation: path-flow var(--dur, 24s) linear infinite;
+}
+
+/* Marquee (after 21st.dev "Marquee") */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+/* Logo wall rows: ~45 px/s, slow enough to read each logo. */
+.marquee-track {
+  animation: marquee 60s linear infinite;
+}
+.marquee-reverse {
+  animation-direction: reverse;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .flow-path,
+  .marquee-track {
+    animation: none;
+  }
+}
