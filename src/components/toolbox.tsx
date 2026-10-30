@@ -1,32 +1,13 @@
 import { certifications, education, skills } from "@/content/profile";
 import { Reveal, SectionHeading } from "./reveal";
-import { TechLogo } from "./tech-icons";
+import { CurvedMarquee } from "./curved-marquee";
 
-const marqueeItems: string[] = skills.flatMap((s) => s.items);
+// Listed in the grouped cards below, but left out of the logo rows.
+const notInMarquee = new Set(["StoreKit 2", "Razorpay", "Python", "Datadog RUM", "Sentry", "FastAPI", "SQLAlchemy", "Alembic"]);
+const marqueeItems: string[] = skills.flatMap((s) => s.items).filter((t) => !notInMarquee.has(t));
 // Alternate items between the rows so each row mixes every group.
 const rowA = marqueeItems.filter((_, i) => i % 2 === 0);
 const rowB = marqueeItems.filter((_, i) => i % 2 === 1);
-
-function LogoRow({ items, reverse }: { items: string[]; reverse?: boolean }) {
-  return (
-    // pt leaves room for the hover tag, which sits above the tile.
-    <div className="marquee pt-12 pb-2">
-      {/* pr matches the gap so the duplicated half lines up exactly at -50%. */}
-      <div className={`marquee-track flex w-max gap-4 pr-4 md:gap-5 md:pr-5${reverse ? " marquee-reverse" : ""}`}>
-        {[...items, ...items].map((t, i) => (
-          <div
-            key={i}
-            className="group relative grid size-24 shrink-0 place-items-center rounded-2xl border border-white/5 bg-neutral-900 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition duration-300 hover:-translate-y-1 hover:border-white/15 hover:bg-neutral-800 md:size-28">
-            <TechLogo name={t} className="size-12 text-(--brand) md:size-14" />
-            <span className="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 translate-y-2 -rotate-6 scale-90 whitespace-nowrap rounded-lg bg-black px-3 py-1.5 text-sm font-semibold text-white opacity-0 shadow-[0_2px_0_#a78bfa] ring-1 ring-white/10 transition duration-200 group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100">
-              {t}
-            </span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
 
 export function Toolbox() {
   return (
@@ -40,13 +21,13 @@ export function Toolbox() {
         />
       </div>
 
-      {/* Logo wall: two rows of brand tiles drifting in opposite directions; a
+      {/* Logo wall: two rows of brand tiles curving past in opposite directions; a
           tilted name tag pops up on hover and the row pauses. Decorative: the
           grouped list below carries the content, so it stays hidden from
           screen readers. */}
-      <div aria-hidden="true" className="mb-16 space-y-2 overflow-hidden mask-[linear-gradient(90deg,transparent,#000_15%,#000_85%,transparent)]">
-        <LogoRow items={rowA} />
-        <LogoRow items={rowB} reverse />
+      <div aria-hidden="true" className="mb-16 overflow-hidden pt-6 mask-[linear-gradient(90deg,transparent,#000_8%,#000_92%,transparent)]">
+        <CurvedMarquee items={rowA} />
+        <CurvedMarquee items={rowB} reverse />
       </div>
 
       <div className="mx-auto grid max-w-6xl gap-4 px-4 sm:grid-cols-2 md:px-8 lg:grid-cols-3">
