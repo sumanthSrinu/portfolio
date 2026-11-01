@@ -3,7 +3,7 @@
 import { ArrowUpRight, Check, Copy, Mail, Phone } from "lucide-react";
 import { useState } from "react";
 import { profile } from "@/content/profile";
-import { BackgroundPaths } from "./background-paths";
+import { ParticleDrift } from "./ui/particle-drift";
 import { Reveal } from "./reveal";
 
 function GitHubIcon() {
@@ -40,8 +40,10 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="relative scroll-mt-24 overflow-hidden border-t border-line">
-      <BackgroundPaths />
+    <section id="contact" className="relative scroll-mt-24 overflow-hidden">
+      <ParticleDrift />
+      {/* Soft vignette keeps the copy readable over the particles. */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.75)_0%,rgba(0,0,0,0.35)_45%,transparent_75%)]" />
       <div className="relative mx-auto flex max-w-4xl flex-col items-center px-4 py-32 text-center md:py-44">
         <Reveal>
           <p className="label mb-6 text-[11px] sm:text-xs">Release notes · The invite</p>
