@@ -13,10 +13,8 @@ npm run build && npm start
 
 ## Edit content
 
-All copy lives in `src/content/profile.ts`. Before publishing, fill in:
-
-- [ ] `linkedin` and `github` URLs (`YOUR-HANDLE`)
-- [ ] `project.demo` (Movies App live demo)
+All copy lives in `src/content/profile.ts`: profile links, experience, skills, the Movies App demo and the
+`shippedApps` panels (store links, brand colour, highlights). App icons live in `public/apps/`.
 
 ## Sections
 

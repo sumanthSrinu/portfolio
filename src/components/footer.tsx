@@ -6,7 +6,7 @@ export function Footer() {
       <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-10 text-sm text-muted md:flex-row md:items-center md:justify-between md:px-8">
         <div>
           <p className="font-display text-lg font-semibold text-ink">
-            sumanth<span className="text-gradient">.</span>
+            sumanth srinivas<span className="text-gradient">.</span>
           </p>
           <p>
             {profile.role} · {profile.location}

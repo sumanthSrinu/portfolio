@@ -23,7 +23,14 @@ function BeatCopy({ beat, index }: { beat: Beat; index: number }) {
   return (
     <>
       <p className="label mb-6 text-[11px] sm:text-xs">{beat.label}</p>
-      {"eyebrow" in beat && <p className="mb-4 font-mono text-sm text-muted">{beat.eyebrow}</p>}
+      {"eyebrow" in beat && (
+        <p className="mb-6 inline-flex flex-wrap items-center justify-center gap-x-2.5 gap-y-1 rounded-full border border-white/15 bg-black/55 px-5 py-2 text-base shadow-[0_0_40px_-12px_rgba(167,139,250,0.6)] backdrop-blur-md sm:text-lg">
+          <span aria-hidden="true" className="size-2 rounded-full bg-violet-400 shadow-[0_0_10px_2px_rgba(167,139,250,0.7)]" />
+          <span className="text-sweep font-display font-semibold">{profile.name}</span>
+          <span aria-hidden="true" className="hidden text-faint sm:inline">—</span>
+          <span className="text-gradient basis-full font-display font-semibold sm:basis-auto">{profile.role}</span>
+        </p>
+      )}
       <Heading className="max-w-4xl font-display text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl md:text-7xl">
         {beat.lead} <span className="text-gradient">{beat.accent}</span>
       </Heading>
@@ -49,31 +56,22 @@ function BeatCopy({ beat, index }: { beat: Beat; index: number }) {
   );
 }
 
-function AnimatedBeat({ beat, index, progress, active }: { beat: Beat; index: number; progress: MotionValue<number>; active: boolean }) {
-  const n = heroBeats.length;
-  const start = index / n;
-  const end = (index + 1) / n;
-  const fade = 0.07;
-  const gap = 0.025;
-  const first = index === 0;
-  const last = index === n - 1;
-
-  // Sequential handoff: each beat is fully gone `gap` before its boundary and the next
-  // starts `gap` after it, so two headlines never overlap. Offsets stay within 0–1.
-  const inStart = start + gap;
-  const outEnd = end - gap;
-  const range = first
-    ? [0, outEnd - fade, outEnd]
-    : last
-      ? [inStart, inStart + fade, 1]
-      : [inStart, inStart + fade, outEnd - fade, outEnd];
-  const opacity = useTransform(progress, range, first ? [1, 1, 0] : last ? [0, 1, 1] : [0, 1, 1, 0]);
-  const y = useTransform(progress, range, first ? [0, 0, -24] : last ? [24, 0, 0] : [24, 0, 0, -24]);
-
+// Scroll decides which beat is active; the switch itself is a short timed
+// animation. The outgoing beat leaves first and the next one follows, so
+// headlines never overlap, and there is no scroll position that shows nothing.
+function AnimatedBeat({ beat, index, active }: { beat: Beat; index: number; active: number }) {
+  const isActive = active === index;
   return (
     <motion.div
-      style={{ opacity, y, willChange: "opacity, transform" }}
-      inert={!active}
+      initial={false}
+      animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: index < active ? -24 : 24 }}
+      transition={
+        isActive
+          ? { duration: 0.55, delay: 0.22, ease: [0.16, 1, 0.3, 1] }
+          : { duration: 0.22, ease: [0.4, 0, 1, 1] }
+      }
+      style={{ willChange: "opacity, transform" }}
+      inert={!isActive}
       className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center"
     >
       <BeatCopy beat={beat} index={index} />
@@ -144,7 +142,7 @@ export function HeroScroll() {
         {/* Reduced motion keeps the static BackgroundPaths (branch above). */}
         <InteractiveNeuralVortex className="opacity-90" />
         {heroBeats.map((beat, i) => (
-          <AnimatedBeat key={beat.label} beat={beat} index={i} progress={smooth} active={active === i} />
+          <AnimatedBeat key={beat.label} beat={beat} index={i} active={active} />
         ))}
         <PipelineProgress progress={smooth} />
         <ScrollHint progress={scrollYProgress} />

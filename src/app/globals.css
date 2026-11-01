@@ -48,6 +48,21 @@ body {
   color: transparent;
 }
 
+/* Gradient sheen that sweeps left → right across the text, then rests on white. */
+@keyframes text-sweep {
+  0% { background-position: 100% 0; }
+  60%, 100% { background-position: 0% 0; }
+}
+.text-sweep {
+  background-image: linear-gradient(90deg, #fafafa 0%, #fafafa 40%, #c084fc 46%, #a78bfa 50%, #f472b6 54%, #fafafa 60%, #fafafa 100%);
+  background-size: 250% 100%;
+  background-position: 100% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: text-sweep 3.5s ease-in-out infinite;
+}
+
 .label {
   font-family: var(--font-mono);
   text-transform: uppercase;
@@ -83,6 +98,11 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  .text-sweep {
+    animation: none;
+    background: none;
+    color: var(--color-ink);
+  }
   .flow-path,
   .marquee-track {
     animation: none;

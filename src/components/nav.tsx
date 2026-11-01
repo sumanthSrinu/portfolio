@@ -26,7 +26,7 @@ export function Nav() {
       />
       <div className="mx-4 mt-3 flex max-w-5xl items-center justify-between gap-4 rounded-full border border-line/80 bg-black/60 py-2 pl-5 pr-2 backdrop-blur-md md:mx-auto">
         <a href="#top" className="font-display text-lg font-semibold tracking-tight" aria-label={`${profile.name}, back to top`}>
-          sumanth<span className="text-gradient">.</span>
+          sumanth srinivas<span className="text-gradient">.</span>
         </a>
 
         <nav aria-label="Primary" className="hidden md:block">

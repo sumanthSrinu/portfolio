@@ -7,9 +7,8 @@ export const profile = {
   location: "Chennai, India",
   email: "sumanthsrinivas.g@gmail.com",
   phone: "+91 7013446373",
-  // TODO: replace with real profile URLs
-  linkedin: "https://www.linkedin.com/in/YOUR-HANDLE",
-  github: "https://github.com/YOUR-HANDLE",
+  linkedin: "https://www.linkedin.com/in/sumanth-srinivas/",
+  github: "https://github.com/sumanthSrinu",
 };
 
 export const heroBeats = [
@@ -24,7 +23,7 @@ export const heroBeats = [
     label: "Sign · The proof",
     lead: "My builds sign",
     accent: "themselves.",
-    body: "At Astrosure I rebuilt the release pipeline on GitHub Actions + Fastlane. Any branch, any environment, a store-ready Android build in 8–10 minutes, and releases 1.7.6 through 1.8.5 unblocked.",
+    body: "At Astrosure I own the mobile frontend. I led the revamp to the new UI, rebuilding the core screens from Figma on personalised v2 APIs, and rebuilt the release pipeline on GitHub Actions + Fastlane: any branch, any environment, store-ready Android builds in 8–\u206010 minutes.",
   },
   {
     label: "Ship · The invite",
@@ -138,9 +137,65 @@ export const project = {
   tagline: "A Netflix-style streaming UI",
   text: "OTT-style ReactJS app on the TMDb API with authentication, a watchlist and responsive carousels.",
   stack: ["React", "TMDb API", "Auth"],
-  // TODO: replace with the real live demo URL
-  demo: "https://YOUR-DEMO-URL",
+  demo: "https://moviesappsuman.ccbp.tech/",
 };
+
+// Apps shipped at each company. Add store/web links as they become available;
+// a link button only renders when its URL is set. `icon` is a path under /public, e.g. "/apps/astrosure.png".
+export type ShippedApp = {
+  name: string;
+  company: string;
+  role: string;
+  /** Short category shown above the name, e.g. "Fitness". */
+  category: string;
+  /** Brand colour sampled from the logo; drives the panel's glow. */
+  color: string;
+  /** What you built on it, shown as a short list in the open panel. */
+  highlights: string[];
+  icon?: string;
+  appStore?: string;
+  playStore?: string;
+  web?: string;
+};
+
+export const shippedApps: ShippedApp[] = [
+  {
+    name: "Astrosure",
+    company: "Astrosure",
+    role: "Release dashboard, v2 UI revamp, payments, analytics and deep links.",
+    category: "Astrology",
+    color: "#3aa6a8",
+    highlights: ["Release dashboard & CI/CD", "App revamp to the new UI", "StoreKit 2 & Razorpay payments", "Analytics, deep links & push"],
+    icon: "/apps/astrosure.png",
+    appStore: "https://apps.apple.com/app/astrosure-ai/id6739531176",
+    playStore: "https://play.google.com/store/apps/details?id=com.astrosureai",
+    web: "https://astrosure.ai",
+  },
+  {
+    name: "Stamin",
+    company: "Stamin",
+    role: "Health tracking, trainer assessments and Play Store releases.",
+    category: "Fitness",
+    color: "#f07a3a",
+    highlights: ["Calorie, step & water tracking", "Trainer assessment & analytics", "Firebase Auth with Google Sign-In", "Play Store releases"],
+    icon: "/apps/stamin-icon.jpg",
+    appStore: "https://apps.apple.com/app/stamin/id6472804697",
+    playStore: "https://play.google.com/store/apps/details?id=com.app_stamin",
+    web: "https://stamin.in",
+  },
+  {
+    name: "OrgFour",
+    company: "OrgFour",
+    role: "Expo app with real-time chat, events and networking.",
+    category: "Events & networking",
+    color: "#7b61d9",
+    highlights: ["Real-time chat with message search", "Event management & networking", "Configuration-driven UI", "Admin portal for surveys & polls"],
+    icon: "/apps/orgfour-icon.png",
+    appStore: "https://apps.apple.com/app/orgfour/id6474268517",
+    playStore: "https://play.google.com/store/apps/details?id=com.orgchats.appbeta001",
+    web: "https://www.orgfour.com",
+  },
+];
 
 export const education = {
   degree: "B.Tech in Mechanical Engineering",

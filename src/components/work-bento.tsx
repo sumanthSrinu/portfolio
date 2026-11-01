@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { project } from "@/content/profile";
 import { AppRevamp } from "./app-revamp";
 import { ReleaseDashboard } from "./release-dashboard";
+import { ShippedApps } from "./shipped-apps";
 import { Reveal, SectionHeading } from "./reveal";
 import { SpotlightCard } from "./spotlight-card";
 
@@ -157,6 +158,8 @@ export function WorkBento() {
           </a>
         </Reveal>
       </div>
+
+      <ShippedApps />
     </section>
   );
 }
