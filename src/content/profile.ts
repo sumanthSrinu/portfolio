@@ -33,11 +33,12 @@ export const heroBeats = [
   },
 ] as const;
 
+// `kind` picks the small visual drawn under each number in the stats bento.
 export const stats = [
-  { value: 3, suffix: "+", label: "years shipping iOS & Android" },
-  { value: 240, suffix: "+", label: "commits across mobile, backend & CI" },
-  { value: 10, from: 8, prefix: "8–", suffix: " min", label: "Android build → Play upload" },
-  { value: 4, suffix: "", label: "analytics tools kept in event parity" },
+  { kind: "years", value: 3, suffix: "+", label: "years shipping iOS & Android" },
+  { kind: "commits", value: 240, suffix: "+", label: "commits across mobile, backend & CI" },
+  { kind: "build", value: 10, from: 8, prefix: "8–", suffix: " min", label: "Android build → Play upload" },
+  { kind: "tools", value: 4, suffix: "", label: "analytics tools kept in event parity" },
 ] as const;
 
 export type Role = {
