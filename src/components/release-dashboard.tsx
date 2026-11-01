@@ -5,7 +5,7 @@ import { useInView, useReducedMotion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 
 const ENVS = ["dev", "preprod", "prod"] as const;
-const STEPS = ["Install deps", "Archive & sign", "Upload dSYMs → Sentry", "Reconcile build number", "Upload → TestFlight"];
+const STEPS = ["Install deps", "Archive & sign", "Reconcile build number", "Upload → TestFlight"];
 
 // Illustrative rows; durations reflect the real 8–10 min Android runs.
 const HISTORY = [

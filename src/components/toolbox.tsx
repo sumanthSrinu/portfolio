@@ -3,7 +3,7 @@ import { Reveal, SectionHeading } from "./reveal";
 import { CurvedMarquee } from "./curved-marquee";
 
 // Listed in the grouped cards below, but left out of the logo rows.
-const notInMarquee = new Set(["StoreKit 2", "Razorpay", "Python", "Datadog RUM", "Sentry", "FastAPI", "SQLAlchemy", "Alembic"]);
+const notInMarquee = new Set(["StoreKit 2", "Razorpay", "Python"]);
 const marqueeItems: string[] = skills.flatMap((s) => s.items).filter((t) => !notInMarquee.has(t));
 // Alternate items between the rows so each row mixes every group.
 const rowA = marqueeItems.filter((_, i) => i % 2 === 0);

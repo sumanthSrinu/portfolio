@@ -62,7 +62,7 @@ export const experience: Role[] = [
     highlights: [
       {
         title: "Release dashboard & CI/CD",
-        text: "Rebuilt the iOS/Android CI/CD pipeline on GitHub Actions + Fastlane (code signing, Sentry symbol upload, build-number reconciliation) and built an internal dashboard to build any branch across dev/preprod/prod with version overrides, release notes, concurrency locks, build history and live store-version tracking.",
+        text: "Rebuilt the iOS/Android CI/CD pipeline on GitHub Actions + Fastlane (code signing, build-number reconciliation) and built an internal dashboard to build any branch across dev/preprod/prod with version overrides, release notes, concurrency locks, build history and live store-version tracking.",
       },
       {
         title: "App revamp to the new UI",
@@ -127,8 +127,8 @@ export const skills = [
   { group: "Languages", items: ["TypeScript", "JavaScript", "Python"] },
   { group: "State & Data", items: ["Redux Toolkit", "TanStack Query", "Zustand", "REST", "Axios", "Firebase"] },
   { group: "CI/CD & Release", items: ["GitHub Actions", "Fastlane", "TestFlight", "Play Console", "Code signing", "Self-hosted runners"] },
-  { group: "Analytics & Observability", items: ["CleverTap", "AppsFlyer", "RudderStack", "GA4", "Datadog RUM", "Sentry"] },
-  { group: "Web & Backend", items: ["React", "Next.js", "Tailwind CSS", "FastAPI", "SQLAlchemy", "Alembic"] },
+  { group: "Analytics & Attribution", items: ["CleverTap", "AppsFlyer", "RudderStack", "GA4"] },
+  { group: "Web", items: ["React", "Next.js", "Tailwind CSS"] },
   { group: "Tools", items: ["Git", "Jest", "Jira", "Figma", "Claude Code"] },
 ] as const;
 

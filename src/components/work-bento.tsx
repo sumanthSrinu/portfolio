@@ -89,7 +89,7 @@ export function WorkBento() {
             "Build history, per-run build times and live store-version tracking",
             "Store-ready Android builds in 8–10 minutes",
           ]}
-          chips={["GitHub Actions", "Fastlane", "Code signing", "Sentry", "Self-hosted runners"]}
+          chips={["GitHub Actions", "Fastlane", "Code signing", "Self-hosted runners"]}
           visual={<ReleaseDashboard />}
         />
 
